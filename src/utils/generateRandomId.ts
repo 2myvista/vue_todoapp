@@ -1,0 +1,1 @@
+export const generateRandomString = () =>{ return Math.trunc(Math.random()*10e10);}
