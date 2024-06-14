@@ -17,7 +17,7 @@ const itemsList = computed(() => {
 	return itemsStore.items
 })
 
-const deleteItem = (id) => {
+const deleteItem = (id:number) => {
 	itemsStore.setInList(id);
 }
 
@@ -31,7 +31,7 @@ const deleteAll = () => {
 <div class="container container_view">
 	<Header/>
 	<ItemToDo v-for="item in itemsList" :key="item.id" :item="item"  @update:delete-item="deleteItem"/>
-	<Footer @update:delete-all="deleteAll"/>
+	<Footer :count="itemsStore.countItems" @update:delete-all="deleteAll"/>
 </div>
 </template>
 

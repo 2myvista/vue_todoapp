@@ -19,7 +19,6 @@ export const useItemsStore = defineStore("items", {
 				);
 				const response = await fetchResponse.json();
 				
-				
 				this.items = response;
 				return this.items;
 			} catch (error) {
@@ -27,8 +26,8 @@ export const useItemsStore = defineStore("items", {
 				throw new Error("responce is not ok, see error");
 			}
 		},
-		countItems(): string {
-			return this.items.length.toString();
+		countItems(): number {
+			return this.items.length;
 		},
 	},
 	actions: {

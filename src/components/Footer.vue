@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useItemsStore } from '@/stores/items';
 
-const itemsStore = useItemsStore();
-
-const countItems = computed(() => {
-	return itemsStore.countItems
-});
+const props = defineProps<{ count: number }>();
 
 const emit = defineEmits(['update:delete-all']);
 const deleteAll = () => {
@@ -17,9 +10,9 @@ const deleteAll = () => {
 
 <template>
 	<div class="footer">
-		<p v-if="countItems > 0">Всего задач: {{ countItems }}</p>
+		<p v-if="count > 0">Всего задач: {{ count }}</p>
 		<p v-else>Задач нет</p>
-		<button v-show="countItems > 0" type="submit" class="button" @click="deleteAll">очистить все</button>
+		<button id="delete-button" v-show="count > 0" type="submit" class="button" @click="deleteAll">очистить все</button>
 	</div>
 </template>
 
